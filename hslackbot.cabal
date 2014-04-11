@@ -17,7 +17,8 @@ library
                        , aeson >=0.6.2.1 && <0.7
                        , parsec >=3.1.5 && <3.2
                        , parsers >=0.11 && <0.12
-                       , scotty >=0.6.1 && <0.7
+                       , scotty >=0.7.2 && <0.8
+                       , scotty-tls >= 0.3 && <0.4
   default-language:    Haskell2010
   
 executable hslackbot

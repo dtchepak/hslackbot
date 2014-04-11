@@ -13,6 +13,7 @@ import Text.Parser.Char
 import Text.Parser.Combinators
 import Text.Parser.Token
 import Web.Scotty
+import Web.Scotty.TLS (scottyTLS)
 
 type Port = Int
 
@@ -54,7 +55,13 @@ type JiraProject = String
 type JiraIssue = String
 
 start :: Port -> IO ()
-start port = scotty port $ do
+start port = scotty port app
+
+startSSL :: FilePath -> FilePath -> Port -> IO ()
+startSSL key cert port = scottyTLS port key cert app
+
+app :: ScottyM()
+app = do
     get "/" $ html "hello world"
     post "/jira" $ do
         jiraPath    <- param "jiraPath"
