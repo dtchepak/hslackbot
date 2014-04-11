@@ -7,6 +7,7 @@ import Data.Char (isAlphaNum)
 import Data.List (intercalate)
 import Data.Maybe (catMaybes)
 import Data.Monoid (mconcat)
+import Network.HTTP.Types.Status
 import qualified Text.Parsec as P
 import qualified Text.Parsec.String as P
 import Text.Parser.Char
@@ -76,7 +77,7 @@ app = do
                         <*> param "user_name"
                         <*> param "text"
                         <*> param "trigger_word"
-        maybe (json $ SlackResponse "hi") json $
+        maybe (status noContent204) json $
             proj `parse` jiraProjs >>= \p -> jiraResponder jiraPath p req
 
 parse :: P.Parser a -> String -> Maybe a
