@@ -10,5 +10,5 @@ curl \
     -d "user_name=Steve" \
     -d "text=googlebot: look at ABC-123, DEF-456 and OTHER-03" \
     -d "trigger_word=googlebot:" \
-    "http://localhost:8080/jira?jiraPath=myserver/display/&jiraProjects=ABC,DEF"
+    "http://localhost:8080/jira?jiraPath=http%3A%2F%2Flocalhost%2Ftest/&jiraProjects=ABC,DEF"
 
